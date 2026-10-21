@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curious Minds Coaching | Jagtap Chowk, Pune</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --deep: #0f2044;
+      --gold: #f5a623;
+      --amber: #e8920a;
+      --cream: #fdf8f0;
+      --white: #ffffff;
+      --text: #1a2640;
+      --muted: #6b7a99;
+      --light-bg: #f4f7ff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5%;
+      background: rgba(10,22,40,0.97);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.7rem; text-decoration: none;
+    }
+    .nav-logo .bulb {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 18px rgba(245,166,35,0.5);
+      animation: glowPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { box-shadow: 0 0 18px rgba(245,166,35,0.5); }
+      50%      { box-shadow: 0 0 32px rgba(245,166,35,0.9); }
+    }
+    .nav-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .nav-logo small { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy);
+      padding: 0.55rem 1.4rem; border-radius: 30px;
+      font-weight: 700; font-size: 0.88rem; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--amber); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 7rem 5% 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(245,166,35,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(245,166,35,0.07) 0%, transparent 60%);
+    }
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(245,166,35,0.18) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: 0.5;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 640px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(245,166,35,0.15);
+      border: 1px solid rgba(245,166,35,0.35);
+      color: var(--gold);
+      padding: 0.4rem 1rem; border-radius: 30px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+    .hero-badge::before { content: '📍'; font-size: 0.9rem; }
+    #hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
+    }
+    #hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+      display: block;
+    }
+    #hero p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.08rem; line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 0.85rem 2rem; border-radius: 40px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(245,166,35,0.4);
+    }
+    .btn-primary:hover { background: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,166,35,0.5); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.35); color: var(--white);
+      padding: 0.85rem 2rem; border-radius: 40px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s 0.3s ease both;
+    }
+    .stat { text-align: left; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900;
+      color: var(--gold); line-height: 1;
+    }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+
+    .hero-visual {
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+      width: min(420px, 40vw);
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    .hero-card h3 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+    .subject-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .chip {
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.25);
+      color: rgba(255,255,255,0.85);
+      padding: 0.35rem 0.85rem; border-radius: 20px;
+      font-size: 0.82rem; font-weight: 500;
+    }
+    .hero-card .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 1.2rem 0; }
+    .hero-card .class-range { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+    .hero-card .class-range strong { color: var(--white); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 5.5rem 5%; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(245,166,35,0.1);
+      color: var(--amber);
+      padding: 0.3rem 1rem; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 580px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-img-box {
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 100%);
+      aspect-ratio: 4/5;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+    }
+    .about-img-box .big-icon { font-size: 5rem; }
+    .about-img-box p { color: rgba(255,255,255,0.7); text-align: center; font-size: 0.95rem; }
+    .about-img-box strong { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+    .floating-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 1rem 1.4rem;
+      border-radius: 14px;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(245,166,35,0.4);
+      text-align: center;
+      line-height: 1.2;
+    }
+    .floating-badge .big { font-size: 1.8rem; font-family: 'Playfair Display', serif; display: block; }
+    .about-points { margin-top: 1.8rem; display: flex; flex-direction: column; gap: 1rem; }
+    .about-point {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.1rem 1.3rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 3px solid var(--gold);
+    }
+    .about-point .icon { font-size: 1.4rem; flex-shrink: 0; }
+    .about-point h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+    .about-point p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── COURSES ── */
+    #courses { background: var(--white); }
+    .courses-header { text-align: center; margin-bottom: 3rem; }
+    .courses-header .section-sub { margin: 0 auto; }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .course-card {
+      border-radius: 18px;
+      padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+    .course-card.dark { background: var(--navy); }
+    .course-card.light { background: var(--light-bg); border: 1px solid #e0e8ff; }
+    .course-card.gold-card { background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%); }
+    .course-card::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      opacity: 0.08;
+    }
+    .course-card.dark::before { background: var(--gold); opacity: 0.15; }
+    .course-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .course-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; margin-bottom: 0.6rem;
+    }
+    .course-card.dark h3, .course-card.gold-card h3 { color: var(--white); }
+    .course-card.light h3 { color: var(--navy); }
+    .course-card.gold-card h3 { color: var(--navy); }
+    .course-card p { font-size: 0.87rem; line-height: 1.65; }
+    .course-card.dark p { color: rgba(255,255,255,0.65); }
+    .course-card.light p { color: var(--muted); }
+    .course-card.gold-card p { color: rgba(10,22,40,0.75); }
+    .course-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
+    .course-tag {
+      padding: 0.25rem 0.7rem; border-radius: 12px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .dark .course-tag { background: rgba(245,166,35,0.15); color: var(--gold); }
+    .light .course-tag { background: rgba(10,22,40,0.07); color: var(--navy); }
+    .gold-card .course-tag { background: rgba(10,22,40,0.12); color: var(--navy); }
+
+    /* ── WHY US ── */
+    #why { background: var(--navy); }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,0.6); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .why-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .why-card:hover { background: rgba(245,166,35,0.08); border-color: rgba(245,166,35,0.3); transform: translateY(-4px); }
+    .why-card .w-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .why-card h4 { color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .why-card p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--cream); }
+    .testi-header { text-align: center; margin-bottom: 3rem; }
+    .testi-header .section-sub { margin: 0 auto; }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .google-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: white; border: 1px solid #e0e0e0;
+      padding: 0.4rem 1rem; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600; color: #555;
+      margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .testi-card {
+      background: white;
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.3s;
+    }
+    .testi-card:hover { transform: translateY(-4px); }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testi-text { font-size: 0.93rem; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 1.2rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-weight: 700; font-size: 1rem;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+    .testi-grade { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.4rem; margin-top: 1.8rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #e8ecf4;
+      border-radius: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-item:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(245,166,35,0.1); }
+    .c-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .c-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 0.3rem; }
+    .c-val { font-size: 0.95rem; font-weight: 500; color: var(--navy); }
+    .c-val a { color: var(--navy); text-decoration: none; }
+    .c-val a:hover { color: var(--amber); }
+
+    /* FORM */
+    .contact-form-wrap {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1.5rem; margin-bottom: 0.4rem;
+    }
+    .contact-form-wrap p { color: rgba(255,255,255,0.6); font-size: 0.88rem; margin-bottom: 1.8rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.5px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: white;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .submit-btn {
+      width: 100%;
+      background: var(--gold); color: var(--navy);
+      border: none; border-radius: 12px;
+      padding: 0.9rem;
+      font-size: 0.95rem; font-weight: 700;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--amber); transform: translateY(-1px); }
+
+    /* ── MAP ── */
+    #map-section { background: var(--light-bg); padding: 3rem 5%; }
+    #map-section h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 1.2rem; text-align: center; }
+    .map-frame {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      border: 3px solid var(--gold);
+    }
+    .map-frame iframe { display: block; width: 100%; height: 420px; border: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 5% 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--white); margin-bottom: 0.4rem;
+    }
+    .footer-brand .brand-sub { font-size: 0.78rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+      font-size: 0.82rem;
+    }
+    .footer-bottom span { color: var(--gold); }
+
+    /* ── WHATSAPP ── */
+    .wa-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      background: #25d366;
+      width: 58px; height: 58px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      transition: transform 0.2s;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .wa-btn:hover { transform: scale(1.1); }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-visual { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      .stat-num { font-size: 1.7rem; }
+      /* Mobile menu open state */
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 70px; left: 0; right: 0;
+        background: rgba(10,22,40,0.98);
+        padding: 1.5rem 5%; gap: 1.2rem; z-index: 99;
+      }
+      .nav-cta.mobile-open { display: block; margin-top: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/918308589210" target="_blank" class="wa-btn" title="Chat on WhatsApp">💬</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="bulb">💡</div>
+    <span>Curious Minds<small>Coaching Institute</small></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enroll Now</a>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Jagtap Chowk, Shanti Nagar · Pune 411040</div>
+    <h1>Where Curious<em>Minds Thrive.</em></h1>
+    <p>Specialist coaching for Class XI &amp; XII, MH-CET, IIT-JEE &amp; NEET. We transform students into confident, exam-ready achievers with focused teaching, rigorous practice, and personalised mentorship.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Enroll Today</a>
+      <a href="#courses" class="btn-outline">Explore Courses</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">5.0⭐</div><div class="stat-label">Google Rating</div></div>
+      <div class="stat"><div class="stat-num">18+</div><div class="stat-label">Google Reviews</div></div>
+      <div class="stat"><div class="stat-num">95%</div><div class="stat-label">Success Rate</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Programmes</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <h3>🎓 Subjects We Teach</h3>
+      <div class="subject-chips">
+        <span class="chip">Mathematics</span>
+        <span class="chip">Physics</span>
+        <span class="chip">Chemistry</span>
+        <span class="chip">Biology</span>
+        <span class="chip">MH-CET</span>
+        <span class="chip">IIT-JEE</span>
+        <span class="chip">NEET</span>
+        <span class="chip">PCM</span>
+        <span class="chip">PCB</span>
+      </div>
+      <div class="divider"></div>
+      <div class="class-range">
+        <strong>Class XI &amp; XII</strong> &nbsp;·&nbsp; <strong>MH-CET</strong> &nbsp;·&nbsp; <strong>IIT-JEE · NEET</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap">
+      <div class="about-img-box">
+        <div class="big-icon">🏫</div>
+        <strong>Curious Minds Coaching</strong>
+        <p>Lane No. 2, Shanti Nagar<br>Jagtap Chowk, Pune – 411040</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color: rgba(255,255,255,0.5);">Est. 2020 · Trusted by hundreds of families</p>
+      </div>
+      <div class="floating-badge">
+        <span class="big">10+</span>
+        Years<br>Experience
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">Building Bright<br>Futures in Pune</h2>
+      <p class="section-sub">Curious Minds Coaching Institute specialises exclusively in Class XI &amp; XII, MH-CET, IIT-JEE, and NEET preparation. Based in Wanowrie, Pune, we combine deep subject expertise with proven exam strategies to help every student reach their dream college.</p>
+      <div class="about-points">
+        <div class="about-point">
+          <div class="icon">🎯</div>
+          <div>
+            <h4>Result-Oriented Teaching</h4>
+            <p>Structured syllabi, regular tests, and performance tracking ensure measurable progress for every student.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="icon">👨‍🏫</div>
+          <div>
+            <h4>Experienced Faculty</h4>
+            <p>Our educators are subject experts with years of experience, dedicated to concept clarity and student success.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="icon">🤝</div>
+          <div>
+            <h4>Small Batch Sizes</h4>
+            <p>Limited students per batch ensures personalised attention and a doubt-free learning environment.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="icon">📍</div>
+          <div>
+            <h4>Conveniently Located</h4>
+            <p>Easily accessible at Lane No. 2, Shanti Nagar, Jagtap Chowk — a safe and student-friendly neighbourhood in Wanowrie, Pune.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="courses-header">
+    <div class="section-tag">Our Programmes</div>
+    <h2 class="section-title">Courses We Offer</h2>
+    <p class="section-sub">Specialist programmes for Class XI & XII and top competitive entrance exams — taught by expert faculty with proven results.</p>
+  </div>
+  <div class="courses-grid">
+    <div class="course-card dark">
+      <div class="course-icon">📐</div>
+      <h3>Class XI & XII – PCM</h3>
+      <p>In-depth coaching for Physics, Chemistry & Mathematics for Class XI and XII students targeting board excellence and entrance exams.</p>
+      <div class="course-tags">
+        <span class="course-tag">Class XI</span>
+        <span class="course-tag">Class XII</span>
+        <span class="course-tag">CBSE / HSC</span>
+      </div>
+    </div>
+    <div class="course-card light">
+      <div class="course-icon">⚗️</div>
+      <h3>Class XI & XII – PCB</h3>
+      <p>Focused coaching for Physics, Chemistry & Biology for students aiming at NEET and HSC board examinations.</p>
+      <div class="course-tags">
+        <span class="course-tag">Class XI</span>
+        <span class="course-tag">Class XII</span>
+        <span class="course-tag">CBSE / HSC</span>
+      </div>
+    </div>
+    <div class="course-card gold-card">
+      <div class="course-icon">🏆</div>
+      <h3>MH-CET Preparation</h3>
+      <p>Comprehensive MH-CET coaching with mock tests, previous year papers, and targeted revision for top Maharashtra colleges.</p>
+      <div class="course-tags">
+        <span class="course-tag">PCM / PCB</span>
+        <span class="course-tag">Mock Tests</span>
+        <span class="course-tag">Past Papers</span>
+      </div>
+    </div>
+    <div class="course-card dark">
+      <div class="course-icon">🚀</div>
+      <h3>IIT-JEE Preparation</h3>
+      <p>Rigorous JEE Main & Advanced preparation with concept mastery, problem-solving techniques and regular full-length tests.</p>
+      <div class="course-tags">
+        <span class="course-tag">JEE Main</span>
+        <span class="course-tag">JEE Advanced</span>
+        <span class="course-tag">Mock Tests</span>
+      </div>
+    </div>
+    <div class="course-card light">
+      <div class="course-icon">🩺</div>
+      <h3>NEET Preparation</h3>
+      <p>Complete NEET coaching covering Biology, Physics and Chemistry with NCERT-focused strategy and extensive practice sets.</p>
+      <div class="course-tags">
+        <span class="course-tag">Biology</span>
+        <span class="course-tag">Physics</span>
+        <span class="course-tag">Chemistry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-tag" style="background:rgba(245,166,35,0.15); color:var(--gold);">Why Choose Us</div>
+  <h2 class="section-title" style="color:white">The Curious Minds<br>Difference</h2>
+  <p class="section-sub">We don't just teach — we mentor, motivate, and shape confident young learners ready for any challenge.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="w-icon">🎓</div>
+      <h4>Expert Faculty</h4>
+      <p>Highly qualified, experienced teachers who go beyond textbooks to build genuine understanding.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">📊</div>
+      <h4>Regular Assessments</h4>
+      <p>Weekly tests and monthly reports help track progress and identify areas needing attention early.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">🙋</div>
+      <h4>Doubt-Clearing Sessions</h4>
+      <p>Dedicated doubt sessions ensure no student is left behind. We take every question seriously.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">👨‍👩‍👧</div>
+      <h4>Parent Communication</h4>
+      <p>Regular parent-teacher meetings and updates keep families in the loop about their child's journey.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="w-icon">🎥</div>
+      <h4>Recorded Lectures</h4>
+      <p>Every lecture is recorded so students can revisit concepts, revise at their own pace and never miss a class.</p>
+    </div>
+    <div class="why-card">
+      <div class="w-icon">🏡</div>
+      <h4>Safe & Supportive</h4>
+      <p>A welcoming classroom environment in Wanowrie where every student feels encouraged and comfortable to learn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testi-header">
+    <div class="section-tag">Student Stories</div>
+    <h2 class="section-title">What Our Students Say</h2>
+    <p class="section-sub">Real reviews from our students on Google. Rated 5.0 ⭐ with 18 reviews.</p>
+  </div>
+  <div style="text-align:center; margin-bottom: 2rem;">
+    <span class="google-badge">⭐ 5.0 · 18 Google Reviews · Curious Minds Coaching</span>
+  </div>
+  <div class="testi-grid">
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"One of the best classes — every lecture is filled with excitement and fun. Even the toughest concept can be learnt quickly with the help of Simon Sir. Each student gets personal attention and any doubts get cleared. 15 days free trial worth a try!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Prathamesh Bhatkhande</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"One of the best classes I have ever come across. The toughest concept gets cleared without breaking a sweat. Every child is observed and helped to overcome their weakness. The lectures are super fun and every lecture is recorded to help the student score good marks."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Samarth Ratnaparkhi</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Learning at Curious Minds with Simon Sir is very good. He teaches each and every concept in an easy way with great examples. He is perfect in his teaching as well as in talking to parents. Thank you Sir for being with us and helping us."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">K</div>
+        <div>
+          <div class="testi-name">Kapil Gurav</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Studying with Curious Minds is amazing. Simon Sir teaches every concept with examples so that we can understand it clearly. Day to day tests help us memorise. In his sessions we study with pleasure, not pressure. Always clears our doubts and gives attention to every student."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Maviya Sayyad</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"The institute of Curious Minds is one of the best classes. The lectures are super interesting — Simon Sir teaches each and every concept and the toughest concepts are cleared easily."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div>
+          <div class="testi-name">Rohit Mane</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Curious Minds is one of the great classes in Pune. Simon Sir teaches complicated topics in an easy way so it is easy to understand, and he is very friendly to students."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Adarsh</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Simon Sir is an amazing teacher. Would recommend this class to everyone."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <div>
+          <div class="testi-name">Dadz Angle</div>
+          <div class="testi-grade">Google Review · 5★</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"My child had a very good experience."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <div>
+          <div class="testi-name">Josphine Swamy</div>
+          <div class="testi-grade">Google Review · 5★ · Parent</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Visit Us or<br>Enroll Today</h2>
+      <p class="section-sub">We'd love to welcome you to the Curious Minds family. Drop by our institute or fill in the form and we'll get back to you shortly.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Address</div>
+            <div class="c-val">Lane No. 2, Shanti Nagar,<br>Jagtap Chowk, Pune – 411040,<br>Maharashtra</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone / WhatsApp</div>
+            <div class="c-val">
+              <a href="tel:+918308589210">+91 83085 89210</a><br>
+              <a href="tel:+919766997845">+91 97669 97845</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val"><a href="mailto:info.tiocm@gmail.com">info.tiocm@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">Batch Timings</div>
+            <div class="c-val">Mon – Sat &nbsp;|&nbsp; Opens at 7 AM · Closes 9 PM<br><span style="font-size:0.82rem; color:var(--muted)">Multiple batch slots available</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <h3>Enquire Now</h3>
+      <p>Fill in your details and we'll call you back within 24 hours.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Student Name</label>
+          <input id="f-student" type="text" placeholder="Full name"/>
+        </div>
+        <div class="form-group">
+          <label>Parent's Name</label>
+          <input id="f-parent" type="text" placeholder="Full name"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input id="f-phone" type="tel" placeholder="+91 XXXXX XXXXX"/>
+        </div>
+        <div class="form-group">
+          <label>Class / Grade</label>
+          <select id="f-grade">
+            <option value="">Select class</option>
+            <option>Class XI</option>
+            <option>Class XII</option>
+            <option>MH-CET Prep</option>
+            <option>IIT-JEE Prep</option>
+            <option>NEET Prep</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject / Course of Interest</label>
+        <select id="f-course">
+          <option value="">Select course</option>
+          <option>Class XI – PCM</option>
+          <option>Class XI – PCB</option>
+          <option>Class XII – PCM</option>
+          <option>Class XII – PCB</option>
+          <option>MH-CET Preparation</option>
+          <option>IIT-JEE Preparation</option>
+          <option>NEET Preparation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea id="f-message" placeholder="Any specific requirements or questions..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitEnquiry()">Send Enquiry on WhatsApp →</button>
+      <div id="form-success" style="display:none; margin-top:1rem; background:rgba(245,166,35,0.15); border:1px solid var(--gold); border-radius:10px; padding:0.9rem 1rem; color:var(--gold); font-weight:600; text-align:center;">
+        ✅ Redirecting to WhatsApp... Simon Sir will contact you soon!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div id="map-section">
+  <h2>📍 Find Us at Jagtap Chowk, Shanti Nagar, Pune</h2>
+  <div class="map-frame">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.0!2d73.8856!3d18.4855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1b3e1111111%3A0x0!2sJagtap+Chowk+Wanowrie+Pune+411040!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">💡 Curious Minds Coaching</div>
+      <div class="brand-sub">Jagtap Chowk, Pune – 411040</div>
+      <p>Specialist coaching for Class XI & XII, MH-CET, IIT-JEE and NEET in Pune. Your child's success is our mission.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#testimonials">Student Results</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#courses">Class XI & XII (PCM)</a></li>
+        <li><a href="#courses">Class XI & XII (PCB)</a></li>
+        <li><a href="#courses">MH-CET Preparation</a></li>
+        <li><a href="#courses">IIT-JEE Preparation</a></li>
+        <li><a href="#courses">NEET Preparation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Curious Minds Coaching Institute, Jagtap Chowk, Pune. All rights reserved.</span>
+    <span style="color:rgba(255,255,255,0.4); font-size:0.78rem;">Made with ❤️ for curious learners</span>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const navCta = document.querySelector('.nav-cta');
+
+  // ── Hamburger menu ──
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.contains('open');
+    if (isOpen) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('mobile-open');
+      navCta.classList.remove('mobile-open');
+    } else {
+      hamburger.classList.add('open');
+      navLinks.classList.add('mobile-open');
+      navCta.classList.add('mobile-open');
+    }
+  });
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('mobile-open');
+      navCta.classList.remove('mobile-open');
+    });
+  });
+
+  // ── Form → WhatsApp ──
+  function submitEnquiry() {
+    const studentName = document.getElementById('f-student').value.trim();
+    const parentName  = document.getElementById('f-parent').value.trim();
+    const phone       = document.getElementById('f-phone').value.trim();
+    const grade       = document.getElementById('f-grade').value;
+    const course      = document.getElementById('f-course').value;
+    const message     = document.getElementById('f-message').value.trim();
+
+    if (!studentName || !phone || !grade) {
+      alert('Please fill in Student Name, Phone Number and Class before submitting.');
+      return;
+    }
+
+    const text =
+      `*New Enquiry – Curious Minds Coaching*\n\n` +
+      `👤 *Student Name:* ${studentName}\n` +
+      `👨‍👩‍👧 *Parent Name:* ${parentName || '—'}\n` +
+      `📞 *Phone:* ${phone}\n` +
+      `🎓 *Class:* ${grade}\n` +
+      `📚 *Course:* ${course || '—'}\n` +
+      `💬 *Message:* ${message || '—'}`;
+
+    const waURL = 'https://wa.me/918308589210?text=' + encodeURIComponent(text);
+
+    // Show success & clear form
+    const success = document.getElementById('form-success');
+    success.style.display = 'block';
+    setTimeout(() => { success.style.display = 'none'; }, 5000);
+
+    document.querySelectorAll('.contact-form-wrap input, .contact-form-wrap select, .contact-form-wrap textarea').forEach(el => {
+      el.value = '';
+      if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    });
+
+    // Open WhatsApp
+    window.open(waURL, '_blank');
+  }
+</script>
+
+</body>
+</html>
